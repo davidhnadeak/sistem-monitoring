@@ -1,0 +1,15 @@
+{
+    "device_id": "CCAAB0C55494",
+    "kode_pos": 12345,
+    "kelurahan": "Sukamaju",
+    "kecamatan": "Sukamundur",
+    "kota": "Sukasuka",
+    "provinsi": "DKI Jakarta",
+    "latitude": -6.123456,
+    "longitude": 106.123456,
+    "ph": 7.5,
+    "temperature": 30,
+    "tds": 200,
+    "turbidity": 0,
+    "permenkes_regulation": "Layak Minum"
+}

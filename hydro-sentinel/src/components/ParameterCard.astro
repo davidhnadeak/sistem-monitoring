@@ -1,0 +1,49 @@
+---
+// Sistem Monitoring/hydro-sentinel/src/components/ParameterCard.astro
+
+import "../styles/css/ParameterCard.css";
+
+interface Props {
+  parameter: "pH Level" | "Temperature" | "TDS" | "Turbidity";
+  unit: string;
+  value: number;
+  icon: string;
+}
+
+const { parameter, unit, value, icon } = Astro.props as Props;
+
+const parameterConfig = {
+  "pH Level": {
+    class: "ph",
+  },
+  Temperature: {
+    class: "temperature",
+  },
+  TDS: {
+    class: "tds",
+  },
+  Turbidity: {
+    class: "turbidity",
+  },
+};
+
+const selectedConfig = parameterConfig[parameter] || {
+  class: "",
+};
+
+const parameterClass = selectedConfig.class;
+---
+
+<div class={`ParameterCard-container ${parameterClass}`}>
+  <div class="parameter-value-wrapper">
+    <h3 class="parameter">{parameter}</h3>
+    <h3 class="value">{value} {unit}</h3>
+  </div>
+  <div class="icon" set:html={icon} />
+</div>
+
+<style>
+  * {
+    /* border: 1px solid aqua; */
+  }
+</style>

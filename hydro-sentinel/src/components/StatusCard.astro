@@ -1,0 +1,45 @@
+---
+// Sistem Monitoring/hydro-sentinel/src/components/StatusCard.astro
+
+import "../styles/css/StatusCard.css";
+
+interface Props {
+  standard: string;
+  status: "Layak Minum" | "Tidak Layak Minum";
+  icon: string;
+}
+
+const { standard, status, icon } = Astro.props as Props;
+
+const statusConfig = {
+  "Layak Minum": {
+    class: "layak-minum",
+  },
+  "Tidak Layak Minum": {
+    class: "tidak-layak-minum",
+  },
+  "Tidak Diketahui": {
+    class: "tidak-diketahui",
+  },
+};
+
+const selectedConfig = statusConfig[status] || {
+  class: "",
+};
+
+const statusClass = selectedConfig.class;
+---
+
+<div class={`StatusCard-container ${statusClass}`}>
+  <div class="standard-status-wrapper">
+    <h3 class="standard">{standard}</h3>
+    <h3 class="status">{status}</h3>
+  </div>
+  <div class="icon" set:html={icon} />
+</div>
+
+<style>
+  * {
+    /* border: 1px solid aqua; */
+  }
+</style>

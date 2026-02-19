@@ -1,0 +1,52 @@
+---
+// Sistem Monitoring/hydro-sentinel/src/components/Sidebar.astro
+
+import "../styles/css/Sidebar.css";
+
+import { icons } from "../utils/icons";
+
+// Fetch data from API
+const response = await fetch("http://127.0.0.1:5000/kode-pos");
+const json = await response.json();
+const data =
+  json.status === "success"
+    ? json.data
+    : [
+        {
+          kelurahan: "Tidak Diketahui",
+          kode_pos: "00000",
+        },
+      ];
+
+const kodePosParam = Astro.url.searchParams.get("kode_pos");
+---
+
+<div class="Sidebar-container">
+  <!-- BRAND -->
+  <a href="" class="brand">
+    <h2>HYDRO SENTINEL</h2>
+    <div class="icon" set:html={icons.header} />
+  </a>
+  <!-- LINK LIST -->
+  <div class="link-list">
+    {
+      data.map((item: any) => {
+        const isActive = kodePosParam === item.kode_pos ? "active" : "";
+        return (
+          <form action="/dashboard" method="get">
+            <input type="hidden" name="kode_pos" value={item.kode_pos} />
+            <button type="submit" class={isActive}>
+              Kel. {item.kelurahan}
+            </button>
+          </form>
+        );
+      })
+    }
+  </div>
+</div>
+
+<style>
+  * {
+    /* border: 1px solid aqua; */
+  }
+</style>

@@ -1,0 +1,18 @@
+.RangeSelector-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0 0 0;
+  color: black;
+}
+.RangeSelector-container form {
+  display: flex;
+}
+.RangeSelector-container form label {
+  margin: 0 0.5rem 0 0;
+}
+.RangeSelector-container form select {
+  color: black;
+  border-radius: 0.3rem;
+  border: 0.09rem solid black;
+}/*# sourceMappingURL=RangeSelector.css.map */

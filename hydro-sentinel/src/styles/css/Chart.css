@@ -1,0 +1,29 @@
+.ChartCard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 47%;
+  margin: 0 0 1rem 0;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 5px 10px #818181;
+}
+.ChartCard-container.ph {
+  color: #ca01e2;
+  border: #ca01e2 0.1rem solid;
+}
+.ChartCard-container.temperature {
+  color: #ff9601;
+  border: #ff9601 0.1rem solid;
+}
+.ChartCard-container.tds {
+  color: #818181;
+  border: #818181 0.1rem solid;
+}
+.ChartCard-container.turbidity {
+  color: #c87400;
+  border: #c87400 0.1rem solid;
+}
+.ChartCard-container h3 {
+  margin: 0 0 0.5rem 0;
+}/*# sourceMappingURL=Chart.css.map */

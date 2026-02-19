@@ -1,0 +1,48 @@
+// src/styles/Header.scss
+
+$containerColor: white;
+$googleMapsColor: $containerColor;
+
+.Header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: $containerColor;
+
+    .title-location-wrapper {
+        margin: 1rem 0 1rem 1rem;
+
+        .location {
+            margin: 0.5rem 0 0.5rem 0;
+        }
+
+        .google-maps {
+            display: flex;
+            align-items: center;
+            color: $googleMapsColor;
+
+            p {
+                margin: 0 0.1rem 0 0.1rem;
+            }
+
+            .external-link {
+                align-self: flex-start;
+            }
+        }
+
+        .google-maps:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .latest-datetime {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 1rem 1rem 1rem 0;
+
+        .datetime {
+            align-self: flex-end;
+        }
+    }
+}

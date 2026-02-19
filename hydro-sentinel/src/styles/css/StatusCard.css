@@ -1,0 +1,33 @@
+.StatusCard-container {
+  display: flex;
+  justify-content: space-between;
+  width: 26%;
+  padding: 1rem 0 1rem 0;
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 10px #818181;
+}
+.StatusCard-container.layak-minum {
+  background: linear-gradient(225deg, #22ff00, #128800);
+}
+.StatusCard-container.tidak-layak-minum {
+  background: linear-gradient(225deg, #ff0000, #8b0000);
+}
+.StatusCard-container.tidak-diketahui {
+  background: linear-gradient(225deg, #ffffff, #8d8d8d);
+}
+.StatusCard-container .standard-status-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 0 1rem;
+}
+.StatusCard-container .standard-status-wrapper .standard {
+  margin: 0 0 1rem 0;
+}
+.StatusCard-container .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem 0 1rem;
+}/*# sourceMappingURL=StatusCard.css.map */

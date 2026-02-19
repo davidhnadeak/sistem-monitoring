@@ -1,0 +1,31 @@
+---
+// Sistem Monitoring/hydro-sentinel/src/layouts/DashboardLayout.astro
+
+import Sidebar from "../components/Sidebar.astro";
+
+import "../styles/css/Layout.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Hydro</title>
+  </head>
+  <body>
+    <div class="Layout-container">
+      <!-- SIDE BAR -->
+      <Sidebar />
+
+      <!-- SLOT -->
+      <slot />
+    </div>
+  </body>
+</html>
+
+<style>
+  * {
+    /* border: 1px solid black; */
+  }
+</style>

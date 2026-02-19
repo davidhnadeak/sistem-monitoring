@@ -1,0 +1,31 @@
+---
+// Sistem Monitoring/hydro-sentinel/src/components/RangeSelector.astro
+
+import "../styles/css/RangeSelector.css";
+
+// Get 'kode_pos' parameter
+const kodePosParam = Astro.url.searchParams.get("kode_pos");
+
+// Get 'range' parameter
+const rangeParam = Astro.url.searchParams.get("range");
+---
+
+<div class="RangeSelector-container">
+  <form action="/dashboard" method="get">
+    <label for="range">Range data :</label>
+    <input type="hidden" name="kode_pos" value={kodePosParam} />
+    <select name="range" id="range" onchange="this.form.submit()">
+      <option value="10" selected={rangeParam === "10"}>10</option>
+      <option value="50" selected={rangeParam === "50"}>50</option>
+      <option value="100" selected={rangeParam === "100"}>100</option>
+      <option value="200" selected={rangeParam === "200"}>200</option>
+      <option value="300" selected={rangeParam === "300"}>300</option>
+    </select>
+  </form>
+</div>
+
+<style>
+  * {
+    /* border: 1px solid aqua; */
+  }
+</style>

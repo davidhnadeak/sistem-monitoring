@@ -1,0 +1,52 @@
+// src/styles/ParameterCard.scss
+
+$containerColor: white;
+$containerBoxShadow: 0 5px 10px #818181;
+$phParameterCardBackground: linear-gradient(225deg, #ff01c8, #9101ff);
+$temperatureParameterCardBackground: linear-gradient(225deg, #ffc401, #ff6701);
+$tdsParameterCardBackground: linear-gradient(225deg, #aaaaaa, #555555);
+$turbidityParameterCardBackground: linear-gradient(225deg, #ff9500, #915400);
+
+.ParameterCard-container {
+    display: flex;
+    justify-content: space-between;
+    width: 24%;
+    padding: 1rem 0 1rem 0;
+    color: $containerColor;
+    border-radius: 0.5rem;
+    box-shadow: $containerBoxShadow;
+
+    &.ph {
+        background: $phParameterCardBackground;
+    }
+
+    &.temperature {
+        background: $temperatureParameterCardBackground;
+    }
+
+    &.tds {
+        background: $tdsParameterCardBackground;
+    }
+
+    &.turbidity {
+        background: $turbidityParameterCardBackground;
+    }
+
+    .parameter-value-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0 0 0 1rem;
+
+        .parameter {
+            margin: 0 0 1rem 0;
+        }
+    }
+
+    .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 1rem 0 1rem;
+    }
+}

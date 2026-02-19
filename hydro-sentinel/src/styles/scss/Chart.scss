@@ -1,0 +1,46 @@
+// src/styles/css/ChartCard.scss
+
+$containerBoxShadow: 0 5px 10px #818181;
+$phChartColor: #ca01e2;
+$temperatureChartColor: #ff9601;
+$tdsChartColor: #818181;
+$turbidityChartColor: #c87400;
+
+// .ChartCard-container, .ChartCard-container * {
+//     border: 1px solid aqua;
+// }
+
+.ChartCard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 47%;
+    margin: 0 0 1rem 0;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    border-radius: 0.3rem;
+    box-shadow: $containerBoxShadow;
+
+    &.ph {
+        color: $phChartColor;
+        border: $phChartColor 0.1rem solid;
+    }
+
+    &.temperature {
+        color: $temperatureChartColor;
+        border: $temperatureChartColor 0.1rem solid;
+    }
+
+    &.tds {
+        color: $tdsChartColor;
+        border: $tdsChartColor 0.1rem solid;
+    }
+
+    &.turbidity {
+        color: $turbidityChartColor;
+        border: $turbidityChartColor 0.1rem solid;
+    }
+
+    h3 {
+        margin: 0 0 0.5rem 0;
+    }
+}

@@ -1,0 +1,46 @@
+// src/styles/dashboard.scss
+
+$containerBackground: linear-gradient(225deg, #01d5ff, #0167ff);
+$monitoringPanelBackgroundColor: white;
+$sectionTitleColor: #01a9ff;
+$sectionBoxShadow: 
+    0 -8px 10px rgba(0, 0, 0, 0.2);
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    background: $containerBackground;
+
+    .monitoring-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        border-radius: 1rem 1rem 0 0;
+        background-color: $monitoringPanelBackgroundColor;        
+
+        .ParameterCard-section, .StatusCard-section, .Chart-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 0 2rem 0;
+            border-radius: 1rem 1rem 0 0;
+            box-shadow: $sectionBoxShadow;
+
+            .section-title {
+                color: $sectionTitleColor;
+            }
+
+            .ParameterCard-list, .StatusCard-list, .Chart-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                width: 100%;
+                margin: 1rem 0 0 0;
+            }
+        }
+    }
+}

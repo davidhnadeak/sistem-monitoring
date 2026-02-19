@@ -1,0 +1,36 @@
+.ParameterCard-container {
+  display: flex;
+  justify-content: space-between;
+  width: 24%;
+  padding: 1rem 0 1rem 0;
+  color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 5px 10px #818181;
+}
+.ParameterCard-container.ph {
+  background: linear-gradient(225deg, #ff01c8, #9101ff);
+}
+.ParameterCard-container.temperature {
+  background: linear-gradient(225deg, #ffc401, #ff6701);
+}
+.ParameterCard-container.tds {
+  background: linear-gradient(225deg, #aaaaaa, #555555);
+}
+.ParameterCard-container.turbidity {
+  background: linear-gradient(225deg, #ff9500, #915400);
+}
+.ParameterCard-container .parameter-value-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 0 0 1rem;
+}
+.ParameterCard-container .parameter-value-wrapper .parameter {
+  margin: 0 0 1rem 0;
+}
+.ParameterCard-container .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem 0 1rem;
+}/*# sourceMappingURL=ParameterCard.css.map */

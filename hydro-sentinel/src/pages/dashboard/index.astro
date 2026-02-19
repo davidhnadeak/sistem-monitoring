@@ -1,0 +1,152 @@
+---
+// Sistem Monitoring/hydro-sentinel/src/pages/dashboard/index.astro
+
+import DashboardLayout from "../../layouts/DashboardLayout.astro";
+import Header from "../../components/Header.astro";
+import ParameterCard from "../../components/ParameterCard.astro";
+import StatusCard from "../../components/StatusCard.astro";
+import RangeSelector from "../../components/RangeSelector.astro";
+import ChartCard from "../../components/ChartCard.jsx";
+
+import "../../styles/css/dashboard.css";
+
+import { icons } from "../../utils/icons";
+
+// Get 'kode_pos' parameter
+const kodePosParam = Astro.url.searchParams.get("kode_pos");
+
+if (!kodePosParam) {
+  return Astro.redirect("/dashboard?kode_pos=14130");
+}
+
+// Fetch data from API
+const response = await fetch(
+  `http://127.0.0.1:5000/kualitas-air-tanah?kode_pos=${kodePosParam}`
+);
+const json = await response.json();
+const data = json.status === "success" ? json.data : [];
+
+// Mengambil 1 data terbaru
+const headerData = data[0];
+
+// Lokasi
+const kelurahan = headerData.kelurahan || "Data Kosong";
+const kecamatan = headerData.kecamatan || "Data Kosong";
+const kota = headerData.kota || "Data Kosong";
+const kodePos = headerData.kode_pos || "00000";
+
+// Google Maps
+const latitude = headerData.latitude || 0;
+const longitude = headerData.longitude || 0;
+const googleMaps = `https://www.google.com/maps?q=${latitude},${longitude}`;
+const uknownLocation = latitude === 0 || longitude === 0;
+const locationStatus =
+  uknownLocation === true ? "Lokasi Tidak Diketahui" : "Lihat Lokasi";
+
+// Datetime
+const datetime = headerData.datetime || "Data Kosong";
+
+// Parameter
+const ph = headerData.ph || 0;
+const temperature = headerData.temperature || 0;
+const tds = headerData.tds || 0;
+const turbidity = headerData.turbidity || 0;
+
+// Status
+const modelClassification = headerData.model_classification || "Data Kosong";
+const permenkesRegulation = headerData.permenkes_regulation || "Data Kosong";
+
+// Get 'range' parameter
+const rangeParam = Astro.url.searchParams.get("range");
+
+// Mengambil 30 data terbaru
+const range = rangeParam ? Number(rangeParam) : 10;
+const chartData = data.slice(0, range).reverse();
+---
+
+<DashboardLayout>
+  <div class="dashboard-container">
+    <!-- HEADER -->
+    <Header
+      kelurahan={kelurahan}
+      kecamatan={kecamatan}
+      kota={kota}
+      kodePos={kodePos}
+      googleMaps={googleMaps}
+      unknownLocation={uknownLocation}
+      locationStatus={locationStatus}
+      datetime={datetime}
+    />
+
+    <!-- MONITORING PANEL -->
+    <div class="monitoring-panel">
+      <!-- PARAMETER CARD SECTION -->
+      <div class="ParameterCard-section">
+        <h2 class="section-title">Parameter Kualitas Air Tanah</h2>
+        <div class="ParameterCard-list">
+          <ParameterCard
+            parameter="pH Level"
+            unit=""
+            value={ph}
+            icon={icons.ph}
+          />
+          <ParameterCard
+            parameter="Temperature"
+            unit="(°C)"
+            value={temperature}
+            icon={icons.temperature}
+          />
+          <ParameterCard
+            parameter="TDS"
+            unit="(mg/L)"
+            value={tds}
+            icon={icons.tds}
+          />
+          <ParameterCard
+            parameter="Turbidity"
+            unit="(NTU)"
+            value={turbidity}
+            icon={icons.turbidity}
+          />
+        </div>
+      </div>
+
+      <!-- STATUS CARD SECTION -->
+      <div class="StatusCard-section">
+        <h2 class="section-title">Status Kelayakan Air Tanah</h2>
+        <div class="StatusCard-list">
+          <StatusCard
+            standard="Permenkes"
+            status={permenkesRegulation}
+            icon={icons.permenkes}
+          />
+          <StatusCard
+            standard="Multilayer Perceptron"
+            status={modelClassification}
+            icon={icons.machineLearning}
+          />
+        </div>
+      </div>
+
+      <!-- ChartCard CARD SECTION -->
+      <div class="Chart-section">
+        <h2 class="section-title">Grafik Kualitas Air Tanah</h2>
+
+        <RangeSelector />
+
+        <div class="Chart-list">
+          <ChartCard parameter="pH Level" data={chartData} client:load />
+          <ChartCard parameter="Temperature" data={chartData} client:load />
+          <ChartCard parameter="TDS" data={chartData} client:load />
+          <ChartCard parameter="Turbidity" data={chartData} client:load />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    * {
+      /* border: 1px solid red; */
+    }
+  </style>
+</DashboardLayout>
