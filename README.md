@@ -1,5 +1,7 @@
-# Sistem Monitoring
+## Software Architecture
 
-Berikut tampilan antarmuka sistem monitoring kualitas air tanah:
+![Sistem Monitoring](images/Arsitektur-Sistem-Monitoring.png)
+
+## User Interface
 
 ![Sistem Monitoring](images/Sistem-Monitoring.jpeg)
